@@ -44,7 +44,7 @@ export const getAllProducts = async (req:Request,res:Response)=>{
 
 
  // Öz Harytlarymy Çagyrmak. 
- export const getMyProductsById = async (req:Request,res:Response)=>{
+ export const getMyProductById = async (req:Request,res:Response)=>{
         
   try {
     // Auth middleware ulanyan bolsangyz (meselem Clerk ya-da JWT), 
