@@ -7,11 +7,11 @@ import { HTTP_STATUS } from '../constant_status_codes/statusCodes';
 export async function syncUser (req:Request,res:Response){
     try{
         
-       const { userId, email, firstName, lastName, imageUrl, phoneNumber } = req.body;
+       const { userId, email, firstName, lastName, imageurl, phoneNumber } = req.body;
       
         if(!userId) return res.status(HTTP_STATUS.UNAUTHORIZED).json({error:'Abuna Ýok!'})
            // const { email, firstName, lastName, imageUrl, phoneNumber } = req.body;
-        if (!email || !firstName || !lastName || !imageUrl) {
+        if (!email || !firstName || !lastName || !imageurl) {
             return res.status(HTTP_STATUS.BAD_REQUEST).json({ error: 'Email, Ady, Familiýasy we Surat dolduryň' });
     }
     const user = await queries.upsertUser({
@@ -19,7 +19,7 @@ export async function syncUser (req:Request,res:Response){
       email,
       firstName,
       lastName,
-      imageUrl,
+       imageUrl: imageurl ?? "",
       phoneNumber: phoneNumber || null, // Eger gelmese null goýýarys
     });
     return res.status(HTTP_STATUS.OK).json(user);
